@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'MaisaApp' target in the 'MaisaApp' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+#endif
