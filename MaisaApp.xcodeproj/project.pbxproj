@@ -37,6 +37,7 @@
 		25168DB61598698500485F88 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25168DB51598698500485F88 /* AppDelegate.m */; };
 		25168DB91598698500485F88 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25168DB81598698500485F88 /* MainViewController.m */; };
 		25168DBB1598698500485F88 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25168DBA1598698500485F88 /* MainViewController.xib */; };
+		25168DC5159869C100485F88 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 25168DC4159869C100485F88 /* www */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,10 +55,10 @@
 		25168D811598698500485F88 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		25168D831598698500485F88 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		25168D851598698500485F88 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		25168D891598698500485F88 /* MaisaApp-Info.plist */ = {isa = PBXFileReference; path = "MaisaApp-Info.plist"; sourceTree = "<group>"; };
+		25168D891598698500485F88 /* MaisaApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MaisaApp-Info.plist"; sourceTree = "<group>"; };
 		25168D8B1598698500485F88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		25168D8D1598698500485F88 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		25168D8F1598698500485F88 /* MaisaApp-Prefix.pch */ = {isa = PBXFileReference; path = "MaisaApp-Prefix.pch"; sourceTree = "<group>"; };
+		25168D8F1598698500485F88 /* MaisaApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MaisaApp-Prefix.pch"; sourceTree = "<group>"; };
 		25168D901598698500485F88 /* Cordova.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cordova.framework; path = /Users/Shared/Cordova/Frameworks/Cordova.framework; sourceTree = "<absolute>"; };
 		25168D951598698500485F88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		25168D991598698500485F88 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Resources/es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -70,13 +71,14 @@
 		25168DAD1598698500485F88 /* Default@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x~iphone.png"; path = "Resources/splash/Default@2x~iphone.png"; sourceTree = "<group>"; };
 		25168DAF1598698500485F88 /* Capture.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Capture.bundle; path = Resources/Capture.bundle; sourceTree = "<group>"; };
 		25168DB11598698500485F88 /* Cordova.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Cordova.plist; sourceTree = "<group>"; };
-		25168DB41598698500485F88 /* AppDelegate.h */ = {isa = PBXFileReference; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
+		25168DB41598698500485F88 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		25168DB51598698500485F88 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
-		25168DB71598698500485F88 /* MainViewController.h */ = {isa = PBXFileReference; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
+		25168DB71598698500485F88 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
 		25168DB81598698500485F88 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
 		25168DBA1598698500485F88 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainViewController.xib; path = Classes/MainViewController.xib; sourceTree = "<group>"; };
-		25168DBD1598698500485F88 /* README */ = {isa = PBXFileReference; name = README; path = Plugins/README; sourceTree = "<group>"; };
-		25168DBE1598698500485F88 /* verify.sh */ = {isa = PBXFileReference; path = verify.sh; sourceTree = "<group>"; };
+		25168DBD1598698500485F88 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; name = README; path = Plugins/README; sourceTree = "<group>"; };
+		25168DBE1598698500485F88 /* verify.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = verify.sh; sourceTree = "<group>"; };
+		25168DC4159869C100485F88 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 		25168D5B1598698400485F88 = {
 			isa = PBXGroup;
 			children = (
+				25168DC4159869C100485F88 /* www */,
 				25168D871598698500485F88 /* MaisaApp */,
 				25168D6C1598698400485F88 /* Frameworks */,
 				25168D6A1598698400485F88 /* Products */,
@@ -327,6 +330,7 @@
 				25168DB01598698500485F88 /* Capture.bundle in Resources */,
 				25168DB21598698500485F88 /* Cordova.plist in Resources */,
 				25168DBB1598698500485F88 /* MainViewController.xib in Resources */,
+				25168DC5159869C100485F88 /* www in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

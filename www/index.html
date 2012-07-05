@@ -1,0 +1,1433 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Maisa Solutions</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+        
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+            <script type="text/javascript" charset="utf-8" src="cardova-1.8.0.js">
+                
+                </script>
+            <link rel="stylesheet" href="css/jquery.mobile-1.0rc1.min.css" />
+            <link rel="stylesheet" href="css/styles.css" />
+            
+            <script type="text/javascript" charset="utf-8">
+                
+                
+                // If you want to prevent dragging, uncomment this section
+                /*
+                 function preventBehavior(e) 
+                 { 
+                 e.preventDefault(); 
+                 };
+                 document.addEventListener("touchmove", preventBehavior, false);
+                 */
+                
+                //var baseUrl = "http://localhost:8080/QuoteWeb"
+                //var baseUrl = "http://nts.ns0.it:8080/QuoteWeb-0.1"
+                var baseUrl = "http://www.bettinglife.it"
+                
+                var deviceLang
+                
+                function onBodyLoad()
+                {	
+                    
+                    document.addEventListener("deviceready",onDeviceReady,false);
+                }
+                
+                /* When this function is called, PhoneGap has been initialized and is ready to roll */
+                function onDeviceReady() {
+                    
+                    //window.history.back = navigator.app.origHistoryBack; 
+                    
+                    // Language selection
+                    var lang = window.localStorage.getItem("lang");
+                    
+                    if (lang) {
+                        deviceLang = lang
+                    } else {
+                        var locale = navigator.language.split("-"); 
+                        if (locale[0] == 'it') {
+                            deviceLang  = 'it'
+                        } else {
+                            deviceLang  = 'en'
+                        }
+                        
+                        $.mobile.changePage( "#settings", { transition: "slide"} );
+                    }
+                    
+                    localizeText()
+                    
+                    
+                    // listen for the "iAdBannerViewDidLoadAdEvent" that is sent by the iAdPlugin
+                    document.addEventListener("iAdBannerViewDidLoadAdEvent", iAdBannerViewDidLoadAdEventHandler, false);
+                    // listen for the "iAdBannerViewDidFailToReceiveAdWithErrorEvent" that is sent by the iAdPlugin
+                    document.addEventListener("iAdBannerViewDidFailToReceiveAdWithErrorEvent", iAdBannerViewDidFailToReceiveAdWithErrorEventHandler, false);
+                    
+                    var adAtBottom = true; 
+                    setTimeout(function() {
+                               window.plugins.iAdPlugin.prepare(adAtBottom);
+                               }, 1000);
+                    
+                }
+                
+                function iAdBannerViewDidFailToReceiveAdWithErrorEventHandler(evt) {
+                    window.plugins.iAdPlugin.showAd(false);
+                }
+                
+                function iAdBannerViewDidLoadAdEventHandler(evt) {
+                    window.plugins.iAdPlugin.showAd(true);
+                }
+                
+                function isConnected() {		
+                    var networkState = navigator.network.connection.type;
+                    var notConnectedStates = Connection.NONE;
+                    
+                    if (networkState == notConnectedStates) {
+                        return false
+                    }
+                    return true
+                }
+                
+                
+            </script>
+            <!-- Google Analitycs -->
+            <script type="text/javascript" src="ga.js" ></script> 
+            <script> 
+                var _gaq = _gaq || []; 
+                _gaq.push(['_setAccount', 'UA-31267419-1']); 
+                _gaq.push(['_setDomainName', 'none']); 
+                _gaq.push(['_trackPageview', 'homepage']); 
+                </script>
+            
+    </head>
+    
+    <body onload="onBodyLoad()">
+        
+        <div id="home" data-role="page">
+            <div data-role="header" data-position="fixed">
+           <h1>Home</h1>
+                            
+            </div>
+            <div data-role="content">
+                
+                <img src="Maisa.png" width="200" height="40" />
+                <a href="#Services"><img src="go.jpg" width="30" height="20" /></a>
+                
+                 
+                <!--//////-->
+                
+                <head>
+                    <script language="JavaScript1.1">
+                        
+                        var image1=new Image()
+                        image1.src="mobilepage.jpg"
+                        var image2=new Image()
+                        image2.src="webpage.jpg"
+                        var image3=new Image()
+                        image3.src="softwarepage.jpg"
+                        //-->
+                        </script>
+                </head>
+                <body>
+                    <img style="border:2px outset #545566" src="mobilepage.jpg" name="slide" width=290 height=100>
+                        <script>
+                            
+                            //variable that will increment through the images
+                            var step=1
+                            function slideit(){
+                                //if browser does not support the image object, exit.
+                                if (!document.images)
+                                return
+                                document.images.slide.src=eval("image"+step+".src")
+                                if (step<3)
+                                step++
+                                else
+                                step=1
+                                //call function "slideit()" every 1.5 seconds
+                                setTimeout("slideit()",2500)
+                            }
+                            slideit()
+                            //-->
+                            </script>
+                </body>
+                <!--
+                <script type="text/javascript">
+                    var slideimages=new Array()
+                    function slideshowimages()
+                    {
+                        for (i=0;i<slideshowimages.arguments.length;i++){
+                            slideimages[i]=new Image()
+                            slideimages[i].src=slideshowimages.arguments[i]
+                        }
+                    }
+                    </script>
+                
+                <img src="rails.gif" alt="Slideshow Image Script" title="Slideshow Image Script" name="slide" border=0 width=110 height=70><a href="http://hscripts.com" style="text-decoration:none;cursor:pointer;font-size:12px;color:green;"></a>
+                    
+                    <script type="text/javascript">
+                        
+                        slideshowimages("rails.gif","html.png","css.png")            
+                        var slideshowspeed=2000
+                        var whichimage=0
+                        function slideit()
+                        {
+                            if (!document.images)
+                            return
+                            document.images.slide.src=slideimages[whichimage].src
+                            if (whichimage<slideimages.length-1)
+                            whichimage++
+                            else
+                            whichimage=0
+                            setTimeout("slideit()",slideshowspeed)
+                        }
+                        slideit()
+                        </script> -->
+                <body>
+                    <head>
+                        <style type="text/css">
+                                p.one
+                                {
+                                    border-style:solid;
+                                    border-color:#A00000;
+                                    border-width:1px;
+                                    
+                                }
+                            </style>
+                    </head>
+                    <body>
+                        <p class="one"><marquee direction="left" bgcolor="white">
+                            <img src="rails.gif">
+                                <img src="html.png">
+                                    <img src="css.png">
+                                        <img src="php.gif">
+                                            <img src="android.gif">
+                                                <img src="iphone.gif">
+                                                    <img src="blackberry.gif">
+                                            </marquee></p>
+<!--
+                    <marquee direction="left">
+                        <img src="rails.gif">
+                        <img src="html.png">
+                        <img src="css.png">
+                        <img src="php.gif">
+                        <img src="android.gif">
+                        <img src="iphone.gif">
+                        <img src="blackberry.gif">
+                    </marquee>
+                </body>
+ -->
+
+                    <!--                
+                <img src="rails.gif" width="110" height="70" />
+                <img src="html.png" width="110" height="70" />
+                <img src="css.png" width="110" height="70" />
+                <img src="php.gif" width="120" height="80" />
+                <img src="android.gif" width="110" height="70" />
+                <img src="iphone.gif" width="110" height="70" />
+                <img src="blackberry.gif" width="120" height="80" />
+                     --><head>
+                         <style type="text/css">
+                             p.one
+                             {
+                                 border-style:solid;
+                                 border-color:#000000;
+                                 border-width:1px;
+                             }
+                             </style>
+                     </head>
+                        <body>
+                            <p class="one"><marquee behaviour = "scroll" direction="up" scrollamount = "1" bgcolor="white">
+                                <h5 style="text-align:left;font-family:arial;color:#A00000;">HIRE WORLD-CLASS DEVELOPERS</h5>
+                                <img src="mobilenew.png" width="290" height="140" />
+                                <h6 style="text-align:left;font-family:arial;color:#000099;">Our team of smart thinking and hard-working engineers can guarantee the highest possible service for all your needs. Our goal is exceed all expectations to ensure 100% client satisfaction in our hopes to build a long and successful relationship with you!</h6>
+                                <h5 style="text-align:left;font-family:arial;color:#A00000;">BUILD YOUR OWN MOBILE ENTERPRISE</h5>
+                                <img src="hirenew.png" width="290" height="140" />
+                                <h6 style="text-align:left;font-family:arial;color:#000099;">Allow us to ease your way into the mobile content industry by providing you with the most innovative and creative mobile content. Our team of highly- skilled mobile app developers are ready to deliver indemand content that can help you bring your mobile business to the next level!</h6>
+                                <h5 style="text-align:left;font-family:arial;color:#A00000;">WEB 3.0 DEVELOPMENT</h5>
+                                <img src="webnew.png" width="290" height="140" />
+                                <h6 style="text-align:left;font-family:arial;color:#000099;">The future of Semantic Web (Web 3.0) mostly focuses on this technology going mainstream. Web 3.0 is slowly grasping a whole new level of multi-tiered Web applications. Focusing on the long-term state of things, Semantic Web technologies (Web 3.0) are maturing and its technological power could be used to describe..</h6>
+                                                </marquee></p>
+
+                        
+
+                        
+                       <!-- 
+                        
+                <h5 style="text-align:left;font-family:arial;color:#A00000;">HIRE WORLD-CLASS DEVELOPERS</h5>
+                <img src="mobilenew.png" width="290" height="140" />
+                <h6 style="text-align:left;font-family:arial;color:#000099;">Our team of smart thinking and hard-working engineers can guarantee the highest possible service for all your needs. Our goal is exceed all expectations to ensure 100% client satisfaction in our hopes to build a long and successful relationship with you!</h6>
+                <h5 style="text-align:left;font-family:arial;color:#A00000;">BUILD YOUR OWN MOBILE ENTERPRISE</h5>
+                <img src="hirenew.png" width="290" height="140" />
+                <h6 style="text-align:left;font-family:arial;color:#000099;">Allow us to ease your way into the mobile content industry by providing you with the most innovative and creative mobile content. Our team of highly- skilled mobile app developers are ready to deliver indemand content that can help you bring your mobile business to the next level!</h6>
+                <h5 style="text-align:left;font-family:arial;color:#A00000;">WEB 3.0 DEVELOPMENT</h5>
+                <img src="webnew.png" width="290" height="140" />
+                <h6 style="text-align:left;font-family:arial;color:#000099;">The future of Semantic Web (Web 3.0) mostly focuses on this technology going mainstream. Web 3.0 is slowly grasping a whole new level of multi-tiered Web applications. Focusing on the long-term state of things, Semantic Web technologies (Web 3.0) are maturing and its technological power could be used to describe..</h6>
+                        -->
+                <p>
+                <a href="#Services"><img src="go.jpg" width="30" height="20" /></a>
+                </p>
+                
+            </div>
+        </div>
+        
+        <div id="Services" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h1>Services</h1>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview">
+                <li><a href="#mobile-page">Mobile Development</a></li>
+                <li><a href="#web-page">Web Development</a></li>
+            <li><a href="#software-page">Software Development</a></li>
+              <li><a href="#Cloud-page">Cloud Computing</a></li>
+                </ul>
+            </div>            
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab" class="ui-btn-active">Services</a></a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ContactUs page -->
+        <div id="ContactUs" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h1>ContactUs</h1>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                <img style="border:2px outset #545566" src="contactpage.jpg" width="290" height="120" />
+                <tr>
+                    <td><img src="heademail.png" width="20" height="20" /></td>
+                    <td>contact@maisasolutions.com</td>
+                </tr>
+                </table>
+                <div>
+                <tr>
+                    <td><img src="headskype.png" width="20" height="20" /></td>
+                    <td>maisasolutions</td>
+                </tr>
+                </table>
+                </div>
+                
+                <tr>
+                    <td><img src="usaflag.png" width="15" height="15" /></td>
+                    <td>(+1) 7196515518 | (+1) 4088684141</td>
+                </tr>
+                <tr>
+                    <td><img src="indiaflag.png" width="15" height="15" /></td>
+                    <td>(+91)8008344449 | (+91)4040177227</td>
+                </tr>
+                </table>
+                
+                <table>
+                    <td>
+                        <h4 style="text-align:left;font-family:arial;color:#000066;">OFFICE ADDRESS</h4>
+                <h6>Flat# 304, 3rd floor</br>Mythri Apartments<br>ECIL X Roads</br>
+                    Hyderabad</br>Andhra Pradesh</br>India 500062</h6>
+                    </td>
+                    <td>
+                        
+
+                    </td>
+                </table>
+            </div>
+            <!-- ////--->
+            <!-- ////--->
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab" class="ui-btn-active">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+     <!-- GetAQuote Page -->
+        <div id="GetAQuote" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h1>GetAQuote</h1>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                
+                <h4 style="text-align:left;font-family:arial;color:#A00000;">
+                    Company Details</br></h4>
+                <form>
+                    First name: <input type="text" name="first name" /></br>
+                    Last name: <input type="text" name="last name" /></br>
+                    Company name: <input type="text" name="Company name" /></br>
+                </form>
+                <select name=country id="country"><option value="">--Select Industry--</option>>
+                    <option value="volvo">IT Software</option>
+                    <option value="saab">Apparel</option>
+                    <option value="mercedes">Banking</option>
+                    <option value="audi">Bio technology</option>
+                    <option value="audi">Chemicals</option>
+                    <option value="audi">communications</option>
+                    <option value="audi">Construction</option>
+                    <option value="audi">Consulting</option>
+                    <option value="audi">Education</option>
+                    <option value="audi">Electronics</option>
+                    <option value="audi">Energy</option>
+                    <option value="audi">Engineering</option>
+                    <option value="audi">Entertainment</option>
+                    <option value="audi">Enveronmental</option>
+                    <option value="audi">Healthcare</option>
+                    <option value="audi">Finance</option>
+                    <option value="audi">Government</option>
+                    <option value="audi">Hospitality</option>
+                    <option value="audi">Machinery</option>
+                    <option value="audi">Insurance</option>
+                    <option value="audi">Manufacturing</option>
+                    <option value="audi">Media</option>
+                    <option value="audi">Not For Profit</option>
+                    <option value="audi">Recreation</option>
+                    <option value="audi">Retail</option>
+                    <option value="audi">Shipping</option>
+                    <option value="audi">Technology</option>
+                    <option value="audi">Telecommunications</option>
+                    <option value="audi">Transportation</option>
+                    <option value="audi">Utilities</option>
+                    <option value="audi">Other</option>
+                </select>
+                <form>
+                    Email Address: <input type="text" name="first name" /></br>
+                    Phone Number: <input type="text" name="last name" /></br>
+                    City: <input type="text" name="Company name" /></br>
+                </form>
+                
+                <select name=country id="country"><option value="">--Select Country--</option><option value="AF" >Afghanistan</option><option value="AL" >Albania</option><option value="AS" >American Samoa</option><option value="AD" >Andorra</option><option value="AO" >Angola</option><option value="AI" >Anguilla</option><option value="AQ" >Antarctica</option><option value="AG" >Antigua and Barbuda</option><option value="AR" >Argentina</option><option value="AM" >Armenia</option><option value="AW" >Aruba</option><option value="AU" >Australia</option><option value="AT" >Austria</option><option value="AZ" >Azerbaijan</option><option value="BS" >Bahamas</option><option value="BH" >Bahrain</option><option value="BD" >Bangladesh</option><option value="BB" >Barbados</option><option value="BY" >Belarus</option><option value="BE" >Belgium</option><option value="BZ" >Belize</option><option value="BJ" >Benin</option><option value="BM" >Bermuda</option><option value="BT" >Bhutan</option><option value="BO" >Bolivia</option><option value="BA" >Bosnia   and Herzegowina</option><option value="BW" >Botswana</option><option value="BV" >Bouvet Island</option><option value="BR" >Brazil</option><option value="IO" >British Indian Ocean Territory</option><option value="BN" >Brunei   Darussalam</option><option value="BG" >Bulgaria</option><option value="BF" >Burkina   Faso</option><option value="BI" >Burundi</option><option value="KH" >Cambodia</option><option value="CM" >Cameroon</option><option value="CA" >Canada</option><option value="CV" >Cape Verde</option><option value="KY" >Cayman Islands</option><option value="CF" >Central African   Republic</option><option value="TD" >Chad</option><option value="CL" >Chile</option><option value="CN" >China</option><option value="CX" >Christmas   Island</option><option value="CC" >Cocos (Keeling) Islands</option><option value="CO" >Colombia</option><option value="KM" >Comoros</option><option value="CG" >Congo</option><option value="CK" >Cook Islands</option><option value="CR" >Costa Rica</option><option value="CI" >Cote D Ivoire</option><option value="HR" >Croatia</option><option value="CU" >Cuba</option><option value="CY" >Cyprus</option><option value="CZ" >Czech Republic</option><option value="DK" >Denmark</option><option value="DJ" >Djibouti</option><option value="DM" >Dominica</option><option value="DO" >Dominican Republic</option><option value="TP" >East Timor</option><option value="EC" >Ecuador</option><option value="EG" >Egypt</option><option value="SV" >El Salvador</option><option value="GQ" >Equatorial Guinea</option><option value="ER" >Eritrea</option><option value="EE" >Estonia</option><option value="ET" >Ethiopia</option><option value="FK" >Falkland Islands (Malvinas)</option><option value="FO" >Faroe   Islands</option><option value="FJ" >Fiji</option><option value="FI" >Finland</option><option value="FR" >France</option><option value="FX" >France, Metropolitan</option><option value="GF" >French   Guiana</option><option value="PF" >French Polynesia</option><option value="TF" >French   Southern Territories</option><option value="GA" >Gabon</option><option value="GM" >Gambia</option><option value="GE" >Georgia</option><option value="DE" >Germany</option><option value="GH" >Ghana</option><option value="GI" >Gibraltar</option><option value="GR" >Greece</option><option value="GL" >Greenland</option><option value="GD" >Grenada</option><option value="GP" >Guadeloupe</option><option value="GU" >Guam</option><option value="GT" >Guatemala</option><option value="GN" >Guinea</option><option value="GW" >Guinea-bissau</option><option value="GY" >Guyana</option><option value="HT" >Haiti</option><option value="HM" >Heard and Mc Donald   Islands</option><option value="HN" >Honduras</option><option value="HK" >Hong   Kong</option><option value="HU" >Hungary</option><option value="IS" >Iceland</option><option value="INDIA" >India</option><option value="class" >Indonesia</option><option value="IR" >Iran (Islamic Republic   of)</option><option value="IQ" >Iraq</option><option value="IE" >Ireland</option><option value="IL" >Israel</option><option value="IT" >Italy</option><option value="JM" >Jamaica</option><option value="JP" >Japan</option><option value="JO" >Jordan</option><option value="KZ" >Kazakhstan</option><option value="KE" >Kenya</option><option value="KI" >Kiribati</option><option value="KP" >Korea, Democratic People Republic   of</option><option value="KR" >Korea, Republic of</option><option value="KW" >Kuwait</option><option value="KG" >Kyrgyzstan</option><option value="LA" >Lao   People Democratic Republic</option><option value="LV" >Latvia</option><option value="LB" >Lebanon</option><option value="LS" >Lesotho</option><option value="LR" >Liberia</option><option value="LY" >Libyan Arab Jamahiriya</option><option value="LI" >Liechtenstein</option><option value="LT" >Lithuania</option><option value="LU" >Luxembourg</option><option value="MO" >Macau</option><option value="MK" >Macedonia</option><option value="MG" >Madagascar</option><option value="MW" >Malawi</option><option value="MY" >Malaysia</option><option value="MV" >Maldives</option><option value="ML" >Mali</option><option value="MT" >Malta</option><option value="MH" >Marshall   Islands</option><option value="MQ" >Martinique</option><option value="MR" >Mauritania</option><option value="MU" >Mauritius</option><option value="YT" >Mayotte</option><option value="MX" >Mexico</option><option value="FM" >Micronesia, Federated States of</option><option value="MD" >Moldova,   Republic of</option><option value="MC" >Monaco</option><option value="MN" >Mongolia</option><option value="MS" >Montserrat</option><option value="MA" >Morocco</option><option value="MZ" >Mozambique</option><option value="MM" >Myanmar</option><option value="NA" >Namibia</option><option value="NR" >Nauru</option><option value="NP" >Nepal</option><option value="NL" >Netherlands</option><option value="AN" >Netherlands   Antilles</option><option value="NC" >New Caledonia</option><option value="NZ" >New   Zealand</option><option value="NI" >Nicaragua</option><option value="NE" >Niger</option><option value="NG" >Nigeria</option><option value="NU" >Niue</option><option value="NF" >Norfolk Island</option><option value="MP" >Northern Mariana Islands</option><option value="NO" >Norway</option><option value="OM" >Oman</option><option value="PK" >Pakistan</option><option value="PW" >Palau</option><option value="PA" >Panama</option><option value="PG" >Papua New Guinea</option><option value="PY" >Paraguay</option><option value="PE" >Peru</option><option value="PH" >Philippines</option><option value="PN" >Pitcairn</option><option value="PL" >Poland</option><option value="PT" >Portugal</option><option value="PR" >Puerto Rico</option><option value="QA" >Qatar</option><option value="RE" >Reunion</option><option value="RO" >Romania</option><option value="RU" >Russian Federation</option><option value="RW" >Rwanda</option><option value="KN" >Saint Kitts and Nevis</option><option value="LC" >Saint   Lucia</option><option value="VC" >Saint Vincent and the Grenadines</option><option value="WS" >Samoa</option><option value="SM" >San Marino</option><option value="ST" >Sao   Tome and Principe</option><option value="SA" >Saudi Arabia</option><option value="SN" >Senegal</option><option value="SC" >Seychelles</option><option value="SL" >Sierra Leone</option><option value="SG" >Singapore</option><option value="SK" >Slovakia (Slovak Republic)</option><option value="SI" >Slovenia</option><option value="SB" >Solomon Islands</option><option value="SO" >Somalia</option><option value="ZA" >South Africa</option><option value="ES" >Spain</option><option value="LK" >Sri Lanka</option><option value="SH" >St.   Helena</option><option value="PM" >St. Pierre and Miquelon</option><option value="SD" >Sudan</option><option value="SR" >Suriname</option><option value="SJ" >Svalbard and Jan Mayen Islands</option><option value="SZ" >Swaziland</option><option value="SE" >Sweden</option><option value="CH" >Switzerland</option><option value="SY" >Syrian Arab   Republic</option><option value="TW" >Taiwan</option><option value="TJ" >Tajikistan</option><option value="TZ" >Tanzania, United Republic   of</option><option value="TH" >Thailand</option><option value="TG" >Togo</option><option value="TK" >Tokelau</option><option value="TO" >Tonga</option><option value="TT" >Trinidad and Tobago</option><option value="TN" >Tunisia</option><option value="TR" >Turkey</option><option value="TM" >Turkmenistan</option><option value="TC" >Turks and Caicos   Islands</option><option value="TV" >Tuvalu</option><option value="UG" >Uganda</option><option value="UA" >Ukraine</option><option value="AE" >United   Arab Emirates</option><option value="UK" >United Kingdom</option><option value="US">United States</option><option value="UY" >Uruguay</option><option value="UZ" >Uzbekistan</option><option value="VU" >Vanuatu</option><option value="VA" >Vatican City State (Holy See)</option><option value="VE" >Venezuela</option><option value="VN" >Viet Nam</option><option value="VG" >Virgin Islands (British)</option><option value="VI" >Virgin Islands   (U.S.)</option><option value="WF" >Wallis and Futuna Islands</option><option value="EH" >Western Sahara</option><option value="YE" >Yemen</option><option value="YU" >Yugoslavia</option><option value="ZR" >Zaire</option><option value="ZM" >Zambia</option><option value="ZW" >Zimbabwe</option></select><br /><br>  
+                <form>
+                    Existing URL: <input type="text" name="first name" /></br>
+                </form>
+                <h4 style="text-align:left;font-family:arial;color:#A00000;">
+                    Project Details</br></h4>
+                <h5 style="text-align:left;font-family:arial;color:#000000;">
+                    Services Interested in? *</br></h5>
+                <form>
+                    <input type="checkbox" name="vehicle" value="Bike" /> Web Development <br />
+                    <input type="checkbox" name="vehicle" value="Car" /> Desktop Apps Development  <br />
+                    <input type="checkbox" name="vehicle" value="Car" /> Rich Apps Development  <br />
+                    <input type="checkbox" name="vehicle" value="Car" /> Toolbar Development  <br />
+                    <input type="checkbox" name="vehicle" value="Car" /> Project Consultancy  Planning  <br />
+                </form>
+                <h5 style="text-align:left;font-family:arial;color:#000000;">
+                    Preferred Work Model?*</br></h5>
+                <form>
+                    <input type="checkbox" name="vehicle" value="Bike" /> Hire a Developer  <br />
+                    <input type="checkbox" name="vehicle" value="Car" /> Time  Material Basis   <br />
+                    <input type="checkbox" name="vehicle" value="Car" /> Fixed Price Model  <br />
+                </form>
+                      
+                        <button type="button">Submit</button>
+                
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab" class="ui-btn-active">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation for Cloud Computing -->
+        <div id="Cloud-page" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>Cloud Computing</h2>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                <img style="border:1px outset #545566" src="cloudpage.jpg" width="290" height="100" />
+                <h5 style="text-align:left;font-family:arial;color:blue;">What is Cloud Computing?</h5>
+                <p style="font-family:arial;font-size:13px;">Cloud computing changes the way we think about technology. Cloud is a computing model providing web-based software, middleware and computing resources on demand.</p>
+                <p style="font-family:arial;font-size:13px;">By deploying technology as a service, you give users access only to the resources they need for a particular task. This prevents you from paying for idle computing resources. Cloud computing can also go beyond cost savings by allowing your users to access the latest software and infrastructure offerings to foster business innovation.</p>
+                <p style="font-family:arial;font-size:13px;">Maisa solutions offers Software Development Services taking advantage of Cloud Computing technologies like the Amazon Elastic Compute Cloud (EC2) and the Simple Storage Service (S3). With these technologies, we can offload activities requiring processing power to dedicated 'Machine Images' and create powerful internet applications that would previously have been impractical to implement.</p>
+                    <p style="font-family:arial;font-size:13px;">With all the rage around it, Cloud Computing has proven to be an irresistible utility.</p>
+                    <p style="font-family:arial;font-size:13px;">With our Cloud Computing services we ensure the following:</p>
+                <ul>
+                    <li style="font-family:arial;font-size:13px;">A Cloud service that is built on an elegant virtual architecture that is dynamically scalable and secured for ease-of-access to end-users.</li>
+                    <li style="font-family:arial;font-size:13px;">Delivering on-demand computing and secured storage that is flexible, cost-effective and dynamically measurable for a more efficient enterprise.</li>
+                    <li style="font-family:arial;font-size:13px;">Ensuring that resources are allocated properly to achieve best results that will lead to an effective economics.</li>
+                </ul>
+                <h5 style="text-align:left;font-family:arial;color:black;">The future of Cloud Computing is within your reach with Maisa Solutions </h5>
+
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+                <!-- Navigation for Flash Development -->
+        <div id="Flash-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>Flash</h2>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                <img style="border:1px outset #545566" src="webpage.jpg" alt="Smiley face" width="290" height="100" />
+                <h3 style="text-align:center;font-family:arial;color:#A00000;">Flash Development</h3>
+                <p style="font-family:arial;font-size:13px;">Web Development is the non-design aspects of building a website; it includes writing markup and coding. Whether you are revamping a website or starting from scratch, web development helps you identify the key points of your website: who will your audience be, how will they be directed to your website, how to make them stay, and what will keep them returning. It also involves shaping technical, aesthetic, and usability concerns.</p>
+                <p style="font-family:arial;font-size:13px;">Being a well-known web development company in India, we always ensure that we serve our global clientele with a wide range of web solutions. We are highly acclaimed on a global scale with our expertise an experience in PHP web development.</p>
+                <p style="font-family:arial;font-size:13px;">We understand the advantages of PHP Development for business: </p>
+                <ul>
+                    <li style="font-family:arial;font-size:13px;">Low development and maintenance costs</li>
+                    <li style="font-family:arial;font-size:13px;">The ability to move beyond static web-based product catalogues</li>
+                    <li style="font-family:arial;font-size:13px;">Creating interactive websites</li>
+                </ul>
+
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation for C/CPP development -->
+        <div id="C-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>C/C++</h2>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                <img style="border:1px outset #545566" src="webpage.jpg" alt="Smiley face" width="290" height="100" />
+                <h3 style="text-align:center;font-family:arial;color:#A00000;">C/C++ Development</h3>
+                <p style="font-family:arial;font-size:13px;">Web Development is the non-design aspects of building a website; it includes writing markup and coding. Whether you are revamping a website or starting from scratch, web development helps you identify the key points of your website: who will your audience be, how will they be directed to your website, how to make them stay, and what will keep them returning. It also involves shaping technical, aesthetic, and usability concerns.</p>
+                <p style="font-family:arial;font-size:13px;">Being a well-known web development company in India, we always ensure that we serve our global clientele with a wide range of web solutions. We are highly acclaimed on a global scale with our expertise an experience in PHP web development.</p>
+                <p style="font-family:arial;font-size:13px;">We understand the advantages of PHP Development for business: </p>
+                <ul>
+                    <li style="font-family:arial;font-size:13px;">Low development and maintenance costs</li>
+                    <li style="font-family:arial;font-size:13px;">The ability to move beyond static web-based product catalogues</li>
+                    <li style="font-family:arial;font-size:13px;">Creating interactive websites</li>
+                </ul>
+
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation for AJAX development -->
+        <div id="AJAX-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>AJAX</h2>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                <img style="border:1px outset #545566" src="webpage.jpg" alt="Smiley face" width="290" height="100" />
+                <h3 style="text-align:center;font-family:arial;color:#A00000;">AJAX Development</h3>
+                <p style="font-family:arial;font-size:13px;">Web Development is the non-design aspects of building a website; it includes writing markup and coding. Whether you are revamping a website or starting from scratch, web development helps you identify the key points of your website: who will your audience be, how will they be directed to your website, how to make them stay, and what will keep them returning. It also involves shaping technical, aesthetic, and usability concerns.</p>
+                <p style="font-family:arial;font-size:13px;">Being a well-known web development company in India, we always ensure that we serve our global clientele with a wide range of web solutions. We are highly acclaimed on a global scale with our expertise an experience in PHP web development.</p>
+                <p style="font-family:arial;font-size:13px;">We understand the advantages of PHP Development for business: </p>
+                <ul>
+                    <li style="font-family:arial;font-size:13px;">Low development and maintenance costs</li>
+                    <li style="font-family:arial;font-size:13px;">The ability to move beyond static web-based product catalogues</li>
+                    <li style="font-family:arial;font-size:13px;">Creating interactive websites</li>
+                </ul>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation for Cakephp development -->
+        <div id="Cakephp-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>CakePHP</h2>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                <img style="border:1px outset #545566" src="cakephp.jpg" alt="Smiley face" width="290" height="170" />
+                <h3 style="text-align:center;font-family:arial;color:#A00000;">CakePHP Development</h3>
+                <p style="font-family:arial;font-size:13px;">CakePHP is that rapid framework used for efficient Web Development and Web solutions processes. This exclusive platform not only provides a flaw-less development platform but also make the web development process rather effortless. Cake PHP has numerous advantages among the other web development framework and software languages. It has the unique ability to follow Model, Vie and controller architecture. This unique character provides our developers with the opportunity to create innovative web solutions and web application development. Cake PHP is identically an open-source framework used in the development of various rich-feature web applications.</p>
+                <p style="font-family:arial;font-size:13px;">Cake is by far among the fast application development framework from PHP, which work on commonly known design patterns like the MVC and the ORM with the convention over configuration paradigm, thus reduces the overall development costs. This is possible because on this particular framework of Cake PHP, our developers can write less number of codes and achieve maximum results. Cake PHP does not require any configurations models, it provide that exclusive opportunity to just set-up the database that the web development process can begin in full swing. This along with many such development-friendly usage capacity, Cake PHP is continuing to be the most sought after and efficient framework for efficient and prolific web development which is extremely simple to learn and write.</p>
+                <h5 style="text-align:left;font-family:arial;color:blue;">CakePHP Development</h5>
+                <p style="font-family:arial;font-size:13px;">CakePHP also features a more active and friendly community and offers a more efficient flexible licensing pattern. This facilitates the web development process faster and better. It also features the compatibility with PHP 4 and PHP 5, along with integration of CRUD for efficient database interaction. The basic character of Cake PHP for an efficient web development platform includes its excellent feature of MVC architecture, generation of coding using Bake, application scaffolding, built-in validation and fast and flexible template features using the PHP syntax along with other helpers. Its helpers include for AJAX, JavaScript, HTML Forms and many more. Cake PHP also facilitates the following advantages of Flexible ACL, Data Sanitization, Flexible Caching and excellent Localization processes in the effort-less process of smooth web development</p>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation for Offshore Development -->
+        <div id="Offshore-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>Offshore Web</h2>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                <img style="border:1px outset #545566" src="webpage.jpg" alt="Smiley face" width="290" height="100" />
+                <h3 style="text-align:center;font-family:arial;color:#A00000;">Offshore Web Development</h3>
+                <p style="font-family:arial;font-size:13px;">Web Development is the non-design aspects of building a website; it includes writing markup and coding. Whether you are revamping a website or starting from scratch, web development helps you identify the key points of your website: who will your audience be, how will they be directed to your website, how to make them stay, and what will keep them returning. It also involves shaping technical, aesthetic, and usability concerns.</p>
+                <p style="font-family:arial;font-size:13px;">Being a well-known web development company in India, we always ensure that we serve our global clientele with a wide range of web solutions. We are highly acclaimed on a global scale with our expertise an experience in PHP web development.</p>
+                <p style="font-family:arial;font-size:13px;">We understand the advantages of PHP Development for business: </p>
+                <ul>
+                    <li style="font-family:arial;font-size:13px;">Low development and maintenance costs</li>
+                    <li style="font-family:arial;font-size:13px;">The ability to move beyond static web-based product catalogues</li>
+                    <li style="font-family:arial;font-size:13px;">Creating interactive websites</li>
+                </ul>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation for JavaApp Development -->
+        <div id="Java-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>JavaWeb</h2>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                <img style="border:1px outset #545566" src="webpage.jpg" alt="Smiley face" width="290" height="100" />
+                <h3 style="text-align:center;font-family:arial;color:#A00000;">Java Web Development</h3>
+                <p style="font-family:arial;font-size:13px;">Web Development is the non-design aspects of building a website; it includes writing markup and coding. Whether you are revamping a website or starting from scratch, web development helps you identify the key points of your website: who will your audience be, how will they be directed to your website, how to make them stay, and what will keep them returning. It also involves shaping technical, aesthetic, and usability concerns.</p>
+                <p style="font-family:arial;font-size:13px;">Being a well-known web development company in India, we always ensure that we serve our global clientele with a wide range of web solutions. We are highly acclaimed on a global scale with our expertise an experience in PHP web development.</p>
+                <p style="font-family:arial;font-size:13px;">We understand the advantages of PHP Development for business: </p>
+                <ul>
+                    <li style="font-family:arial;font-size:13px;">Low development and maintenance costs</li>
+                    <li style="font-family:arial;font-size:13px;">The ability to move beyond static web-based product catalogues</li>
+                    <li style="font-family:arial;font-size:13px;">Creating interactive websites</li>
+                </ul>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation for WebApp Development -->
+        <div id="WebApp-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>WebApp</h2>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                    <img style="border:1px outset #545566" src="webpage.jpg" alt="Smiley face" width="290" height="100" />
+                    <h3 style="text-align:center;font-family:arial;color:#A00000;">WebApp Development</h3>
+                    <p style="font-family:arial;font-size:13px;">Web Development is the non-design aspects of building a website; it includes writing markup and coding. Whether you are revamping a website or starting from scratch, web development helps you identify the key points of your website: who will your audience be, how will they be directed to your website, how to make them stay, and what will keep them returning. It also involves shaping technical, aesthetic, and usability concerns.</p>
+                    <p style="font-family:arial;font-size:13px;">Being a well-known web development company in India, we always ensure that we serve our global clientele with a wide range of web solutions. We are highly acclaimed on a global scale with our expertise an experience in PHP web development.</p>
+                    <p style="font-family:arial;font-size:13px;">We understand the advantages of PHP Development for business: </p>
+                    <ul>
+                        <li style="font-family:arial;font-size:13px;">Low development and maintenance costs</li>
+                        <li style="font-family:arial;font-size:13px;">The ability to move beyond static web-based product catalogues</li>
+                        <li style="font-family:arial;font-size:13px;">Creating interactive websites</li>
+                    </ul>
+                    
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation for PHP development -->
+        <div id="PHP-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>PHP</h2>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                <img style="border:1px outset #545566" src="webpage.jpg" alt="Smiley face" width="290" height="100" />
+                <h3 style="text-align:center;font-family:arial;color:#A00000;">PHP Web Development</h3>
+                <p style="font-family:arial;font-size:13px;">Web Development is the non-design aspects of building a website; it includes writing markup and coding. Whether you are revamping a website or starting from scratch, web development helps you identify the key points of your website: who will your audience be, how will they be directed to your website, how to make them stay, and what will keep them returning. It also involves shaping technical, aesthetic, and usability concerns.</p>
+                <p style="font-family:arial;font-size:13px;">Being a well-known web development company in India, we always ensure that we serve our global clientele with a wide range of web solutions. We are highly acclaimed on a global scale with our expertise an experience in PHP web development.</p>
+                <p style="font-family:arial;font-size:13px;">We understand the advantages of PHP Development for business: </p>
+                <ul>
+                    <li style="font-family:arial;font-size:13px;">Low development and maintenance costs</li>
+                    <li style="font-family:arial;font-size:13px;">The ability to move beyond static web-based product catalogues</li>
+                    <li style="font-family:arial;font-size:13px;">Creating interactive websites</li>
+                </ul>
+
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuotepage-3" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation for RubyOnRails Development -->
+        <div id="Ruby-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>Ruby on Rails</h2>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                <img style="border:1px outset #545566" src="webpage.jpg" alt="Smiley face" width="290" height="100" />
+                <h3 style="text-align:center;font-family:arial;color:#A00000;">Ruby on Rails Development</h3>
+                
+                <p style="font-family:arial;font-size:13px;">"Ruby" are short runs of text alongside the base text, typically used in East Asian documents to indicate pronunciation or to provide a short annotation. CSS will now support the ability to add small annotations on top or next to words, most often used in Chinese and Japanese.</p>
+                
+                <h5 style="text-align:left;font-family:arial;color:blue;">DRY</h5>
+                <p style="font-family:arial;font-size:13px;">Simply means "Don't Repeat Yourself." We use it when we need it in an application. Through the power of Ruby, it is being used for Rails to bring it to lofe.</p>
+                <h5 style="text-align:left;font-family:arial;color:blue;">Convention Over Configuration</h5>
+                <p style="font-family:arial;font-size:13px;">With the fact that Rails has defaults for just about every aspect, following Conventions allow us to write a Rails application using less code and cutting time, money and energy spent in developing.</p>
+                <h5 style="text-align:left;font-family:arial;color:blue;">Representational State Transfer</h5>
+                <p style="font-family:arial;font-size:13px;">This is the very foundation of the RESTful architecture. By organizing your application around resources and standard HTTP verbs, we deliver in the fastest way possible.</p>
+                <h4 style="text-align:left;font-family:arial;color:#A00000;">MVC Architecture</h4>
+                <h5 style="text-align:left;font-family:arial;color:blue;">Model</h5>
+                <ul>
+                    <li style="font-family:arial;font-size:13px;">The model is aware of all the data being displayed.</li>
+                    <li style="font-family:arial;font-size:13px;">The model represents the enterprise data and business rules that govern access to and updates of this data.</li>
+                    <li style="font-family:arial;font-size:13px;">The model is actually not aware about the presentation data and how that data will be displayed on the browser.</li>
+                 </ul>
+                <h5 style="text-align:left;font-family:arial;color:blue;">View</h5>
+                <ul>
+                    <li style="font-family:arial;font-size:13px;">It is a representation of a model, wherein there can be various views associated with it.</li>
+                    <li style="font-family:arial;font-size:13px;">It interacts with a model via reference to the model object itself.</li>
+                    <li style="font-family:arial;font-size:13px;">Since the View is not dependent on the application logic, it remains the same even if there are modifications in the business logic itself.</li>
+                </ul>
+                <h5 style="text-align:left;font-family:arial;color:blue;">Controller</h5>
+                <ul>
+                    <li style="font-family:arial;font-size:13px;">Every user request always goes through the controller.</li>
+                    <li style="font-family:arial;font-size:13px;">The controller is responsible for intercepting requests from the view to the model.</li>
+                    <li style="font-family:arial;font-size:13px;">During after each action has been taken on the data, the controller is responsible for directing the appropriate view to the user.</li>
+                </ul>
+                <h4 style="text-align:left;font-family:arial;color:#A00000;">RAILS STRENGTH </h4>
+
+                <p style="font-family:arial;font-size:13px;">RAILS is abundant with great features that ensures productivity and efficiency. These features build on one another, allowing for a more complex and aggressive system.</p>
+                
+                <ol>
+                    <li style="font-family:arial;font-size:13px;">Metaprogramming - Ruby is one of the best languages for metaprogramming, and rails takes good advantage of this capability.</li>
+                    <li style="font-family:arial;font-size:13px;">Active Record - The Rails version of Active Record saves objects to the database, thus guaranteeing efficiency.</li>
+                    <li style="font-family:arial;font-size:13px;">Convention Over Configuration - By following suggested naming conventions, Rails doesn't need much configuration.</li>
+                    <li style="font-family:arial;font-size:13px;">Scaffolding - Rails automatically creates the scaffolding you need, shielding you from unnecessary temporary coding work.</li>
+                    <li style="font-family:arial;font-size:13px;">Build-in testing - Since Rails provides a supporting code called harnesses and fixtures, it makes it easier to run test cases. In the end, Ruby can actually execute all the automated tests with the rake utility.</li>
+                    <li style="font-family:arial;font-size:13px;">Three environments - Rails makes available three default environments: development, testing, production. As each behaves differently, it make your entire software development cycle easier.</li>
+                </ol>
+                <h4 style="text-align:left;font-family:arial;color:#A00000;">THE ADVANTAGES</h4>
+                <ul>
+                    <li style="font-family:arial;font-size:13px;">Crud</li>
+                    <li style="font-family:arial;font-size:13px;">Scaffolding</li>
+                    <li style="font-family:arial;font-size:13px;">Dry</li>
+                    <li style="font-family:arial;font-size:13px;">Ajax</li>
+                </ul>
+
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation for web page-->
+        <div id="web-page" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h1>Services</h1>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview">
+                    <li><a href="#Ruby-dev">Ruby on Rails  Development</a></li>
+                    <li><a href="#PHP-dev">PHP Development</a></li>
+                    <li><a href="#WebApp-dev">WebApp Development</a></li>
+                    <li><a href="#Java-dev">Java App Development</a></li>
+                    <li><a href="#Offshore-dev">Offshore Web Development</a></li>
+                    <li><a href="#Cakephp-dev">Cakephp Web Development</a></li>
+                    <li><a href="#AJAX-dev">AJAX Development</a></li>
+                    <li><a href="#C-dev">C/C++ Development</a></li>
+                    <li><a href="#Flash-dev">Flash Development</a></li>
+                </ul>
+            </div>  
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab"  class="ui-btn-active">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation for Oracle Solutions -->
+        <div id="Oracle-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>Oracle Solutions</h2>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                <img style="border:1px outset #545566" src="softwarepage.jpg" alt="Smiley face" width="290" height="100" />
+                <h2 style="text-align:center;font-family:arial;color:#A00000;">Oracle Solutions</h2>
+                
+                <p style="font-family:arial;font-size:13px;">Oracle is a database technology made up of a set of processes running in your operating system maintaining data and figuring out where it should go on your hard drive. Oracle solutions provide you with Oracle applications support, security, database management and administration, tuning, development, data warehousing, licensing, and more. It will ensure that your Oracle applications run smoothly. Know more, know it sooner; so you can make quick and better business decisions.</p>
+                <p style="font-family:arial;font-size:13px;">Oracle solutions assist businesses in business operations and risk-compliance management. Specific solutions include business intelligence, business process outsourcing, customer relationship management, governance risk and compliance management, supply chain management etc.</p>
+                <p style="font-family:arial;font-size:13px;">Oracle solutions enable businesses to:</p>
+                
+                <ol>
+                    <li style="font-family:arial;font-size:13px;">Automate customer interactions</li>
+                    <li style="font-family:arial;font-size:13px;">Gain valuable insights</li>
+                    <li style="font-family:arial;font-size:13px;">Supervise the business with statistics</li>
+                    <li style="font-family:arial;font-size:13px;">Lessen time-consuming systems</li> 
+                </ol>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation for SAP Solutions -->
+        <div id="SAP-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>SAP</h2>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                <img style="border:1px outset #545566" src="softwarepage.jpg" alt="Smiley face" width="290" height="100" />
+                <h2 style="text-align:center;font-family:arial;color:#A00000;">SAP Solutions</h2>
+                
+                <p style="font-family:arial;font-size:13px;">SAP Solutions acts as an integral part of SAP in organizing and interacting with a common private database for a comprehensive range of corporate applications and provide software solutions to optimize and innovate core business process. It offers streamlining of your business so you can achieve maximum profitable growth. SAP solutions offer faster business decisions, less expensive document handling, and better control of business-critical information.</p>
+                <p style="font-family:arial;font-size:13px;">SAP provides a tool that helps monitor business management. SAP solutions include:</p>
+                
+                <ol>
+                    <li style="font-family:arial;font-size:13px;">Central system administration and reporting</li>
+                    <li style="font-family:arial;font-size:13px;">Project, test and system monitoring</li>
+                    <li style="font-family:arial;font-size:13px;">IT technical reporting</li>
+                    <li style="font-family:arial;font-size:13px;">Service desk</li> 
+                    <li style="font-family:arial;font-size:13px;">Key installation.</li> 
+                </ol>
+                <p style="font-family:arial;font-size:13px;">SAP solutions decreases technical risks, centralize system and real-time monitor the system. Such solutions are needed when:</p>
+                
+                <ol>
+                    <li style="font-family:arial;font-size:13px;">Designing simulations and end-user experiences</li>
+                    <li style="font-family:arial;font-size:13px;">Developing strategies to avoid delays and overruns</li>
+                    <li style="font-family:arial;font-size:13px;">Predicting possible issues</li>
+                    <li style="font-family:arial;font-size:13px;">Collaborating between the business and IT.</li> 
+                </ol>
+                <p style="font-family:arial;font-size:13px;">SAP solutions are segmented into customer relationship management, product lifetime management, supply chain management, supplier relationship management.</p>
+
+
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation for E-Commerce Solutions -->
+        <div id="ECommerce-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>E-Commerce</h2>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                <img style="border:1px outset #545566" src="softwarepage.jpg" alt="Smiley face" width="290" height="100" />
+                <h2 style="text-align:center;font-family:arial;color:#A00000;">E-commerce Solutions</h2>
+                
+                <p style="font-family:arial;font-size:13px;">Online businesses have exploded in an unprecedented fashion in the last couple of years making the internet a very crowded and competitive marketplace. Understanding the importance of both your business and online transactions, ecommerce solutions seek to provide you with the following:</p>
+                
+                <ol>
+                    <li style="font-family:arial;font-size:13px;">Re-engineer your existing website or build business-specific online shopping channel.</li>
+                    <li style="font-family:arial;font-size:13px;">Reduce operation costs while increasing your ROI.</li>
+                    <li style="font-family:arial;font-size:13px;">Safe and faster transactions for your customers.</li>
+                    <li style="font-family:arial;font-size:13px;">Increase traffic to your website and convert visitors into customers and eventually retaining them as loyal customers.</li> 
+                </ol>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation for Browser Development -->
+        <div id="Browser-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>BrowserDevelop</h2>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                <img style="border:1px outset #545566" src="softwarepage.jpg" alt="Smiley face" width="290" height="100" />
+                <h2 style="text-align:center;font-family:arial;color:#A00000;">Browser Development</h2>
+                
+                <p style="font-family:arial;font-size:13px;">Web tools such as web browsers make consumers' use of the world wide web easier. It is important that a browser captures the user's attention and engage them with amiable features. Aside from granting access to the world wide web, a browser can also be used to access information provided by web servers in private networks or files in file systems. Browser development lets you achieve customization that is both creative and visually-appealing, according to your business needs.</p>
+                <p style="font-family:arial;font-size:13px;">Browser development is designed to:</p>
+                
+                <ol>
+                    <li style="font-family:arial;font-size:13px;">Enhance the distribution of information to users</li>
+                    <li style="font-family:arial;font-size:13px;">Automatically forwards relevant messages to target users</li>
+                    <li style="font-family:arial;font-size:13px;">Boost plug-ins and extra-features appropriate for the list of people users</li>                    
+                </ol>
+                <p style="font-family:arial;font-size:13px;">We understand that a well developed browser always gives simple instructions on how to get started with the browser, extended services like offers on custom backgrounds and menu, better local storage and full packaging.</p>
+
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation for Content Management Systems -->
+        <div id="Content-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>CMS</h2>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                <img style="border:1px outset #545566" src="softwarepage.jpg" width="290" height="100" />
+                <h2 style="text-align:center;font-family:arial;color:#A00000;">Content Management
+                    Systems Development</h2>
+                
+                <p style="font-family:arial;font-size:13px;">Content management system (CMS) is an application that is primed for website or online portal owners to efficiently update and manage its multimedia contents. In this ever changing world, exchange of information is fast-paced and therefore it is imperative to keep your website updated in order to generate a steady flow of traffic. CMS provides an easyto- use and cost-effective way to manage and control your business presence online. You will be able to upload contents into your online portal easier and faster.</p>
+                <p style="font-family:arial;font-size:13px;">A content management system supplies a list of procedures on how to manage workflow especially when managing objects, servers, auditing, reports and security.</p>
+                <p style="font-family:arial;font-size:13px;">With content management system development, the business can further:</p>
+                
+                <ol>
+                    <li style="font-family:arial;font-size:13px;">Improve in-house communication and reporting</li>
+                    <li style="font-family:arial;font-size:13px;">Reduce redundant procedures and repetitive actions during inter-departmental coordination</li>
+                    <li style="font-family:arial;font-size:13px;">Control all information and promotes the validity of information entries</li>
+                    <li style="font-family:arial;font-size:13px;">Control the access of information</li>
+                    <li style="font-family:arial;font-size:13px;">Allow file-sharing in a big group and storing of documents</li>
+                    
+                </ol>
+
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation for Database Design -->
+        <div id="Database-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>Database Design</h2>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                <img style="border:1px outset #545566" src="softwarepage.jpg" alt="Smiley face" width="290" height="100" />
+                
+                <h2 style="text-align:center;font-family:arial;color:#A00000;">Database Design and Development</h2>
+                
+                <p style="font-family:arial;font-size:13px;">Database technology is one of the most essential and powerful tools to manage and organize your business' mounting data efficiently and economically. It makes available a single unit of information where you want it, when you want it. It can be shared among users or applications. It is important to have a database application with a high level of integrity and security, and at the same time providing a structured approach on usability, consistency, flexibility, completeness and efficiency.</p>
+                <p style="font-family:arial;font-size:13px;">Database design is the method of storing an organized collection of information in digital.</p>
+                <p style="font-family:arial;font-size:13px;">Our process includes:</p>
+                
+                <ol>
+                    <li style="font-family:arial;font-size:13px;">determining the relationships between the different information entries like cause and effect, branch and sub-branch, step 1 to step 2, etc.</li>
+                    <li style="font-family:arial;font-size:13px;">Plotting of the information with proper signs to show the logical flow of the information</li>
+                </ol>
+                <p style="font-family:arial;font-size:13px;">We certify that we can give the basic features of a good design: <p style="text-align:left;font-family:arial;font-size:13px;color:#A00000;">atomicity, uniformity, isolation and durability.</p></p>
+                
+ 
+
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- Navigation for RichInt Development -->
+        <div id="Richint-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>RichInt</h2>
+            </div>
+            <div data-role="content">
+                <img src="Maisa.png" width="200" height="40" />
+                <img style="border:1px outset #545566" src="softwarepage.jpg" alt="Smiley face" width="290" height="100" />
+                
+                <h2 style="text-align:center;font-family:arial;color:#A00000;">Rich Internet App Development</h2>
+                
+                <p style="font-family:arial;font-size:13px;">Rich Internet Application is a web application designed to deliver the same features and functions commonly associated with desktop applications. It runs in a web browser and commonly does not use or require software installations to work. Integration of RIAs in your business website promotes customer interactions, and with rich applications, you create a compelling, exciting, and involving content that is enjoyable by your users. RIA development enables business to provide an interactive experience and higher service to customers.</p>
+                <p style="font-family:arial;font-size:13px;">Rich Internet App (RIA) are apps that combine improved user interface (list of commands from the internet user) and functionality of the desktop software. Developing RIA provides solutions that are more consistent, targeted, responsive and intelligent.</p>
+                <p style="font-family:arial;font-size:13px;">With our RIA development processes, we make sure that it revolves around helping the business:</p>
+                
+                <ol>
+                    <li style="font-family:arial;font-size:13px;">To maintain codes and to make them cleaner</li>
+                    <li style="font-family:arial;font-size:13px;">To find software bugs and clean them</li>
+                    <li style="font-family:arial;font-size:13px;">To review codes and spot bugs</li>
+                    <li style="font-family:arial;font-size:13px;">Games</li>
+                    <li style="font-family:arial;font-size:13px;">To identify problems and bad practices</li>
+                </ol>
+                <p style="font-family:arial;font-size:13px;">RIA development helps eliminate the limitations of low HML interactivity, data entering, processing and retrieval of problems, scalability complicities and feedback loops.</p>
+                <h4 style="text-align:left;font-family:arial;color:#A00000;">HTML5 Development</h4>
+                <p style="font-family:arial;font-size:13px;">HTML5 is the fifth version of Hyper Text Mark-up Language (HTML). It is an improved version of HTML, where all the tools and techniques of the basic language are retained and presented in a simpler format. Since it supports all the data that has to be presented on the World Wide Web server, HTML5 is extremely significant. It is very helpful for the purpose of web designing and formatting. The language is used to structure and present content on the websites and this latest version comes with advanced coding for providing more support to multimedia.</p>
+                <h5 style="text-align:left;font-family:arial;color:blue;">Advantages</h5>
+                <ul>
+                    <li style="font-family:arial;font-size:13px;">Mutuality</li>
+                    <li style="font-family:arial;font-size:13px;">Cleaner markup / Improved Code</li>
+                    <li style="font-family:arial;font-size:13px;">Improved Semantics</li>
+                    <li style="font-family:arial;font-size:13px;">Elegant forms</li>
+                    <li style="font-family:arial;font-size:13px;">Consistency</li>
+                    <li style="font-family:arial;font-size:13px;">Improved Accessibility</li>
+                    <li style="font-family:arial;font-size:13px;">Fulfill the need of Web application</li>
+                    <li style="font-family:arial;font-size:13px;">Offline Application cache</li>
+                    <li style="font-family:arial;font-size:13px;">Client-side database</li>
+                    <li style="font-family:arial;font-size:13px;">Geolocation support</li>
+                </ul>
+                <h4 style="text-align:left;font-family:arial;color:#A00000;">CSS3 Development</h4>
+                <p style="font-family:arial;font-size:13px;">CSS3 is the latest version of CSS. The biggest change that is currently planned with CSS level 3 is the introduction of modules. The advantage to modules is that it (supposedly) allows the specification to be completed and approved more quickly, because segments are completed and approved in chunks. This also allows browser and user-agent manufacturers to support sections of the specification but keep their code bloat to a minimum by only supporting those modules that make sense. For example, a text reader wouldn't need to include modules that only define how an element is going to display visually. But even if it only included the aural modules, it would still be a standards-compliant CSS 3 tool.</p>
+                <h5 style="text-align:left;font-family:arial;color:blue;">Some New Features of CSS3</h5>
+                <h6 style="text-align:left;font-family:arial;color:blue;">Selectors</h6>
+                <p style="font-family:arial;font-size:13px;">Selectors in CSS 3 are going to be very interesting. They will allow the designer/developer to select on much more specific levels of the document. One of the nice things about this module is that many browsers are already starting to support the advanced CSS 3 selectors, so you can start trying them out now. For example, some new selectors are: </p>
+                <ul>
+                    <li style="font-family:arial;font-size:13px;">matching on attributes and attribute values, including partial matches.</li>
+                    <li style="font-family:arial;font-size:13px;">structural pseudo-classes, such as the nth-child.</li>
+                    <li style="font-family:arial;font-size:13px;">a target pseudo-class to style only elements that are targetted in the URL</li>
+                    <li style="font-family:arial;font-size:13px;">a checked pseudo-class to style any element that is checked such as radio or checkbox elements.</li>
+                </ul>
+                <h5 style="text-align:left;font-family:arial;color:blue;">Text Effects and Layout</h5>
+                <p style="font-family:arial;font-size:13px;">Making changes to the hyphenation, whitespace, and justification of text in documents.</p>
+                <h5 style="text-align:left;font-family:arial;color:blue;">First-Letter and First-Line Pseudo-Classes</h5>
+                <p style="font-family:arial;font-size:13px;">CSS 3 should allow properties to affect kerning and alignment of drop-caps.</p>
+                <h5 style="text-align:left;font-family:arial;color:blue;">Paged Media and Generated Conten</h5>
+                <p style="font-family:arial;font-size:13px;">CSS 3 will now support more options in paged media, such as running headers and footers and page numbers. Plus there will be advanced properties for printing generated content including properties for footnotes and cross-references.</p>
+                <h5 style="text-align:left;font-family:arial;color:blue;">Multi-Column Layout</h5>
+                <p style="font-family:arial;font-size:13px;">Right now, the multi-column layout working draft provides properties to allow designers to display their content in multiple columns with definitions like the column-gap, column-count, and column-width.</p>
+                <h5 style="text-align:left;font-family:arial;color:blue;">Ruby</h5>
+                <p style="font-family:arial;font-size:13px;">CSS will now support the ability to add small annotations on top or next to words, most often used in Chines and Japanese. They are generally used to give the pronunciation or meaning of difficult ideograms.</p>
+                <h5 style="text-align:left;font-family:arial;color:blue;">CSS 3 Will Be Fun</h5>
+                <p style="font-family:arial;font-size:13px;">Once it's fully adopted as a standard and Web browsers and user-agents begin using it, CSS 3 will be a powerful tool for Web designers. The new features listed above are only a small sub-set of all the additions and changes to the specification.</p>
+
+
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation for software page -->
+        <div id="software-page" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h1>Services</h1>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview">
+                    <li><a href="#Richint-dev">RichInt Application Development</a></li>
+                    <li><a href="#Database-dev">Database Design and Development</a></li>
+                    <li><a href="#Content-dev">Content Management Systems Development</a></li>
+                    <li><a href="#Browser-dev">Browser Development</a></li>
+                    <li><a href="#ECommerce-dev">E-Commerce Solutions</a></li>
+                    <li><a href="#SAP-dev">SAP Solutions</a></li>
+                    <li><a href="#Oracle-dev">Oracle Solutions</a></li>
+                </ul>
+            </div>  
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab"  class="ui-btn-active">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+     
+         <!--Navigation for windows-->
+        <div id="Windows-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>Windows</h2>
+            </div>
+            <div data-role="content">
+                <body>
+                    <img src="Maisa.png" width="200" height="40" />
+                    <img style="border:1px outset #545566" src="windows.png" alt="Smiley face" width="290" height="200" />
+                    
+                    <h2 style="text-align:center;font-family:arial;color:#A00000;">Windows Application Development</h2>
+                    
+                    <p style="font-family:arial;font-size:13px;">Windows application development creates application programming interface (API) used by applications specifically written for Wndows. We take cutting-edge technologies to develop rich, user-friendly, top-quality and effective Windows applications from games to essential business applications. Techniques include using the lastet development platforms, application development tools, and only the best engineering practices.
+                    </p>
+                </body>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+                
+        <!--Navigation for Symbian App Development-->
+        <div id="Symbian-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>Symbian</h2>
+            </div>
+            <div data-role="content">
+                <body>
+                    <img src="Maisa.png" width="200" height="40" />
+                    <img style="border:1px outset #545566" src="symbian.png" alt="Smiley face" width="290" height="200" />
+                    
+                    <h2 style="text-align:center;font-family:arial;color:#A00000;">Symbian Application Development</h2>
+                    
+                    <p style="font-family:arial;font-size:13px;">Symbian is an advanced mobile operating system accredited by phone manufacturers like Nokia and Sony Ericsson.</p>
+                    <p style="font-family:arial;font-size:13px;">Symbian app development usually includes enhancing features on:</p>
+                    
+                    <ul>
+                        <li style="font-family:arial;font-size:13px;">Security</li>
+                        <li style="font-family:arial;font-size:13px;">GPS</li>
+                        <li style="font-family:arial;font-size:13px;">Bluetooth-based tools</li>
+                        <li style="font-family:arial;font-size:13px;">Games</li>
+                        <li style="font-family:arial;font-size:13px;">Multi-media features.</li>
+                    </ul>
+                    <p style="font-family:arial;font-size:13px;">Products of Symbian app development are always mass-market oriented, can be used when connected to wireless network, promotes reliable communication, efficiency-oriented and based on standards.</p>
+                    
+
+                </body>
+
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Navigation for Blackberry Development -->
+        <div id="Blackberry-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>BlackBerry</h2>
+            </div>
+            <div data-role="content">
+                <body>
+                    <img src="Maisa.png" width="200" height="40" />
+                    <img style="border:1px outset #545566" src="blackberry.png" alt="Smiley face" width="290" height="200" />
+                    
+                    <h2 style="text-align:center;font-family:arial;color:#A00000;">BlackBerry Application Development</h2>
+                    
+                    <p style="font-family:arial;font-size:13px;">Blackberry app development is all about creating software tools needed for business and for personal needs that can run on BlackBerry smartphones and tablets.</p>
+                    <p style="font-family:arial;font-size:13px;">Our Developers</p>
+                    
+                    <ul>
+                        <li style="font-family:arial;font-size:13px;">Identify and analyze the specific needs</li>
+                        <li style="font-family:arial;font-size:13px;">Create app designs as a solution to the needs</li>
+                        <li style="font-family:arial;font-size:13px;">Guarantee the design runs on the BlackBerry system</li>
+                        <li style="font-family:arial;font-size:13px;">Manage the app designs to maximize benefits from the design
+                        </ul>
+                        
+                </body>
+
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Navigation for iPad Development -->
+        <div id="iPad-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>iPad</h2>
+            </div>
+            <div data-role="content">
+                <body>
+                    <img src="Maisa.png" width="200" height="40" />
+                    <img style="border:1px outset #545566" src="ipad.png" alt="Smiley face" width="290" height="200" />
+                    
+                    <h2 style="text-align:center;font-family:arial;color:#A00000;">iPad Application Development</h2>
+                    <h4 style="font-family:arial;color:blue">The iPad boosts work productivity anywhere and anytime, allow us to help you boost your business through our iPad app developments.</h4>
+                    
+                    <p style="font-family:arial;font-size:13px;">In the battle of tablets, the iPad is obviously the emerging victor. Ever since it was launched, it continues to conquer the tablet sector and already taking notable bites out of the PC market.</p>
+                    <p style="font-family:arial;font-size:13px;">The iPad is mostly used for:</p>
+                    <ol>
+                        <li style="font-family:arial;font-size:13px;">Meetings and conferences</li>
+                        <li style="font-family:arial;font-size:13px;">Taking down of notes and recording special data</li>
+                        <li style="font-family:arial;font-size:13px;">Managing customers and supervising operations</li>
+                        <li style="font-family:arial;font-size:13px;">Analyzing reports and coming up with decisions</li>
+                        <li style="font-family:arial;font-size:13px;">Brainstorming ideas and soliciting outstanding wit
+                            
+                            To maximize the benefits of the iPad, we are committed to do the impossible for you:</li>
+                    </ol>
+                    <p style="font-family:arial;font-size:13px;">We develop complex yet highly interactive and easy to understand iPad applications.</p>
+                    <p style="font-family:arial;font-size:13px;">We set up:</p>
+                    <ul>
+                        <li>Business apps</li>
+                        <li>Educational apps</li>
+                        <li>Sale apps</li>
+                        <li>Financial apps</li>
+                        <li>Gaming apps</li>
+                    </ul> 
+                </body>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
+<!-- Navigation for iPhone Development -->
+        <div id="iPhone-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>iPhone</h2>
+            </div>
+            <div data-role="content">
+                <body>
+                    <img src="Maisa.png" width="200" height="40" />
+                    <img style="border:1px outset #545566" src="iphone2.png" alt="Smiley face" width="290" height="200" />
+                    
+                    <h2 style="text-align:center;font-family:arial;color:#A00000;">iPhone Application Development</h2>
+                    
+                    <p style="font-family:arial;font-size:13px;">Since a business needs presence on iPhones, applications are continuously being created to connect the space between the business and the end-users using iPhone.</p>
+                    <p style="font-family:arial;font-size:13px;">What can we do to bring success this era of iPhones?</p>
+                    <ol>
+                        <li style="font-family:arial;font-size:13px;">We create relevant and fresh contents like News, Blogs, Photos etc</li>
+                        <li style="font-family:arial;font-size:13px;">We work with news through email and social networking sites like Facebook, MySpace and Twitter</li>
+                        <li style="font-family:arial;font-size:13px;">We develop applications that take advantage of the iPhone technology like multi-touch interface, GPS, accelerometer etc
+                            
+                            Having iOS and Mac technologies at the core, the engineering teams for iPhone and iPad application development work to provide uniqueness to each application. They do this by leveraging the different form factors, thereby bringing a special and unmatched end-user experience.</li>
+                    </ol> 
+                    <p style="font-family:arial;font-size:13px;">Using iOS, we can produce amazing and innovative Mac apps. By using this technology we can develop most advanced technologies and development systems to get the job done.</p>
+                    <p style="font-family:arial;font-size:13px;">Not only on building business application, we also develop game apps by using the following:</p>
+                    <ul>
+                        <li>Cocoa / Objective C</li>
+                        <li>OpenGL</li>
+                        <li>Core Graphics</li>
+                        <li>Core Foundation</li>
+                        <li>Core Services</li>
+                        <li>Core Animation</li>
+                        <li>Core Audio</li>
+                        <li>Core Video</li>
+                        <li>Quartz</li>
+                        <li>Unity 3D</li>
+                    </ul> 
+                    
+                </body>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Navigation for Android Development -->
+        <div id="Android-dev" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h2>Android</h2>
+            </div>
+            <div data-role="content">
+                <body>
+                    <img src="Maisa.png" width="200" height="40" />
+                    <img style="border:1px outset #545566" src="android1.jpg" alt="Smiley face" width="290" height="200" />
+                    <h2 style="text-align:center;font-family:arial;color:#A00000;">Android Application Development</h2>
+                        <h4 style="font-family:arial;color:blue">Android use has been incredibly growing fast as a smartphone platform.</h4>
+                <p style="font-family:arial;font-size:15px;">
+                    This use is directly proportional to the 
+                    number of users as this number increases,
+                    the demand for AndroidApplication development
+                    also increases. Android applications are
+                    written using the Java programming language
+                    and a custom virtual machine in running and
+                    testing the applications. A knowledgeable
+                    Android app development team can take on the
+                    toughest challenges and deliver outstanding
+                    Android apps to the specification of your
+                    needs.</p>
+                </body>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!--Navigation for Mobile Development -->
+        <div id="mobile-page" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-icon="arrow-l" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Back</a>
+                <h1>Services</h1>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview">
+                    <li><a href="#Android-dev">Android App  Development</a></li>
+                    <li><a href="#iPhone-dev">iPhone App Development</a></li>
+                    <li><a href="#iPad-dev">iPad App Development</a></li>
+                    <li><a href="#Blackberry-dev">BlackBerry App Development</a></li>
+                    <li><a href="#Windows-dev">Windows App Development</a></li>
+                    <li><a href="#Symbian-dev">Symbian App Development</a></li>
+                </ul>
+            </div>  
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#Services" data-role="tab" class="ui-btn-active">Services</a></li>
+                        <li><a href="#ContactUs" data-role="tab">ContactUs</a></li>
+                        <li><a href="#GetAQuote" data-role="tab">GetAQuote</a></li>
+                    </ul>
+                </div>
+            </div>
+                    
+           <!-- ////////////// -->        
+        <script src="js/jquery.js"> </script>
+        <script src="js/jquery.mobile-1.0rc1.min.js"></script>
+        <script>
+            
+            $("a[data-role=tab]").each(function () {
+                                       var anchor = $(this);
+                                       anchor.bind("click", function () {
+                                                   $.mobile.changePage(anchor.attr("href"), {
+                                                                       transition: "none",
+                                                                       changeHash: false
+                                                                       });
+                                                   return false;
+                                                   });
+                                       });
+            
+            $("div[data-role=page]").bind("pagebeforeshow", function (e, data) {
+                                          $.mobile.silentScroll(0);
+                                          $.mobile.changePage.defaults.transition = 'slide';
+                                          });
+            </script>
+    </body>
+    
+</html>
